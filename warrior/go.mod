@@ -1,4 +1,4 @@
-module github.com/go-warrior/cmd
+module github.com/go-warrior/cmd/warrior/v2
 
 go 1.16
 
