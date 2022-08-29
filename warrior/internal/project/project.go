@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/AlecAivazis/survey/v2"
-	"github.com/go-warrior/cmd/internal/base"
+	"github.com/go-warrior/cmd/warrior/v2/internal/base"
 	"github.com/spf13/cobra"
 )
 

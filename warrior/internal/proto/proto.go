@@ -1,9 +1,9 @@
 package proto
 
 import (
-	"github.com/go-warrior/cmd/internal/proto/add"
-	"github.com/go-warrior/cmd/internal/proto/client"
-	"github.com/go-warrior/cmd/internal/proto/server"
+	"github.com/go-warrior/cmd/warrior/v2/internal/proto/add"
+	"github.com/go-warrior/cmd/warrior/v2/internal/proto/client"
+	"github.com/go-warrior/cmd/warrior/v2/internal/proto/server"
 
 	"github.com/spf13/cobra"
 )

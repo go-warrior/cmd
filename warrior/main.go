@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/go-warrior/cmd/internal/change"
-	"github.com/go-warrior/cmd/internal/project"
-	"github.com/go-warrior/cmd/internal/proto"
-	"github.com/go-warrior/cmd/internal/run"
-	"github.com/go-warrior/cmd/internal/upgrade"
+	"github.com/go-warrior/cmd/warrior/v2/internal/change"
+	"github.com/go-warrior/cmd/warrior/v2/internal/project"
+	"github.com/go-warrior/cmd/warrior/v2/internal/proto"
+	"github.com/go-warrior/cmd/warrior/v2/internal/run"
+	"github.com/go-warrior/cmd/warrior/v2/internal/upgrade"
 	"github.com/spf13/cobra"
 	"log"
 )

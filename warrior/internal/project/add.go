@@ -8,7 +8,7 @@ import (
 
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/fatih/color"
-	"github.com/go-warrior/cmd/internal/base"
+	"github.com/go-warrior/cmd/warrior/v2/internal/base"
 )
 
 var repoAddIgnores = []string{
