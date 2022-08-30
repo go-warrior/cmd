@@ -19,9 +19,9 @@ var CmdUpgrade = &cobra.Command{
 // Run upgrade the kratos tools.
 func Run(cmd *cobra.Command, args []string) {
 	err := base.GoInstall(
-		"github.com/go-kratos/kratos/cmd/kratos/v2@latest",
-		"github.com/go-kratos/kratos/cmd/protoc-gen-go-http/v2@latest",
-		"github.com/go-kratos/kratos/cmd/protoc-gen-go-errors/v2@latest",
+		"github.com/go-warrior/cmd/warrior/v2@latest",
+		"github.com/go-warrior/warrior/cmd/protoc-gen-go-http/v2@latest",
+		"github.com/go-warrior/warrior/cmd/protoc-gen-go-errors/v2@latest",
 		"google.golang.org/protobuf/cmd/protoc-gen-go@latest",
 		"google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest",
 		"github.com/google/gnostic/cmd/protoc-gen-openapi@latest",
