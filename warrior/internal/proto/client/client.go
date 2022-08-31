@@ -51,8 +51,6 @@ func run(cmd *cobra.Command, args []string) {
 	}
 	if strings.HasSuffix(proto, ".proto") {
 		err = generate(proto, args)
-		fmt.Println("走到这里了")
-
 	} else {
 		err = walk(proto, args)
 	}
@@ -98,7 +96,16 @@ func generate(proto string, args []string) error {
 		"--go-http_out=paths=source_relative:.",
 		"--go-errors_out=paths=source_relative:.",
 		"--openapi_out=paths=source_relative:.",
+		"--go_out=paths=source_relative:.",
+		"--go-kirito_out=paths=source_relative:.",
+		"--openapiv2_opt=logtostderr=true",
+		"--openapiv2_opt=json_names_for_fields=false",
+		"--openapiv2_opt=disable_default_errors=true",
+		"--openapiv2_opt=allow_delete_body=true",
+		"--openapiv2_opt=enums_as_ints=true",
+		"--openapiv2_opt=openapi_naming_strategy=simple",
 	}
+	fmt.Println(inputExt)
 	input = append(input, inputExt...)
 	protoBytes, err := os.ReadFile(proto)
 	if err == nil && len(protoBytes) > 0 {
