@@ -43,8 +43,8 @@ func ModuleVersion(path string) (string, error) {
 	}
 }
 
-// KratosMod returns kratos mod.
-func KratosMod() string {
+// WarriorMod returns warrior mod.
+func WarriorMod() string {
 	// go 1.15+ read from env GOMODCACHE
 	cacheOut, _ := exec.Command("go", "env", "GOMODCACHE").Output()
 	cachePath := strings.Trim(string(cacheOut), "\n")
@@ -53,10 +53,10 @@ func KratosMod() string {
 	if cachePath == "" {
 		cachePath = filepath.Join(gopath, "pkg", "mod")
 	}
-	if path, err := ModuleVersion("github.com/go-warrior/pkg/v2"); err == nil {
-		// $GOPATH/pkg/mod/github.com/go-kratos/kratos@v2
+	if path, err := ModuleVersion("github.com/go-warrior/cmd/warrior/v2"); err == nil {
+		// $GOPATH/pkg/mod/github.com/go-warrior/cmd/warrior/v2@v2
 		return filepath.Join(cachePath, path)
 	}
-	// $GOPATH/src/github.com/go-kratos/kratos
-	return filepath.Join(gopath, "src", "github.com", "go-kratos", "kratos")
+	// $GOPATH/src/github.com/go-warrior/cmd/warrior
+	return filepath.Join(gopath, "src", "github.com", "go-warrior", "cmd", "warrior")
 }

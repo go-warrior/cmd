@@ -41,7 +41,7 @@ func run(cmd *cobra.Command, args []string) {
 	)
 	if err = look("protoc-gen-go", "protoc-gen-go-grpc", "protoc-gen-go-http", "protoc-gen-go-errors", "protoc-gen-openapi"); err != nil {
 		// update the kratos plugins
-		cmd := exec.Command("kratos", "upgrade")
+		cmd := exec.Command("warrior", "upgrade")
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 		if err = cmd.Run(); err != nil {
@@ -51,6 +51,8 @@ func run(cmd *cobra.Command, args []string) {
 	}
 	if strings.HasSuffix(proto, ".proto") {
 		err = generate(proto, args)
+		fmt.Println("走到这里了")
+
 	} else {
 		err = walk(proto, args)
 	}
@@ -89,8 +91,8 @@ func generate(proto string, args []string) error {
 		input = append(input, "--proto_path="+protoPath)
 	}
 	inputExt := []string{
-		"--proto_path=" + base.KratosMod(),
-		"--proto_path=" + filepath.Join(base.KratosMod(), "third_party"),
+		"--proto_path=" + base.WarriorMod(),
+		"--proto_path=" + filepath.Join(base.WarriorMod(), "third_party"),
 		"--go_out=paths=source_relative:.",
 		"--go-grpc_out=paths=source_relative:.",
 		"--go-http_out=paths=source_relative:.",
