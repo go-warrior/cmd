@@ -97,7 +97,7 @@ func generate(proto string, args []string) error {
 		"--go-errors_out=paths=source_relative:.",
 		"--openapi_out=paths=source_relative:.",
 		"--go_out=paths=source_relative:.",
-		"--go-kirito_out=paths=source_relative:.",
+		"--go-warrior_out=paths=source_relative:.",
 		"--openapiv2_opt=logtostderr=true",
 		"--openapiv2_opt=json_names_for_fields=false",
 		"--openapiv2_opt=disable_default_errors=true",
@@ -105,7 +105,6 @@ func generate(proto string, args []string) error {
 		"--openapiv2_opt=enums_as_ints=true",
 		"--openapiv2_opt=openapi_naming_strategy=simple",
 	}
-	fmt.Println(inputExt)
 	input = append(input, inputExt...)
 	protoBytes, err := os.ReadFile(proto)
 	if err == nil && len(protoBytes) > 0 {
