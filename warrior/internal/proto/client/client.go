@@ -14,22 +14,16 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// CmdClient represents the source command.
-var CmdClient = &cobra.Command{
-	Use:   "client",
-	Short: "Generate the proto client code",
-	Long:  "Generate the proto client code. Example: warrior proto client helloworld.proto",
-	Run:   run,
-}
-
-var protoPath string
-
-func init() {
-	if protoPath = os.Getenv("KRATOS_PROTO_PATH"); protoPath == "" {
-		protoPath = "./third_party"
+var (
+	// CmdClient represents the source command.
+	CmdClient = &cobra.Command{
+		Use:                "client",
+		Short:              "Generate the proto client code",
+		Long:               "Generate the proto client code. Example: warrior proto client helloworld.proto",
+		DisableFlagParsing: true,
+		Run:                run,
 	}
-	CmdClient.Flags().StringVarP(&protoPath, "proto_path", "p", protoPath, "proto path")
-}
+)
 
 func run(cmd *cobra.Command, args []string) {
 	if len(args) == 0 {
@@ -40,7 +34,7 @@ func run(cmd *cobra.Command, args []string) {
 		err   error
 		proto = strings.TrimSpace(args[0])
 	)
-	if err = look("protoc-gen-go", "protoc-gen-go-grpc", "protoc-gen-go-http", "protoc-gen-go-errors", "protoc-gen-openapi"); err != nil {
+	if err = look("protoc-gen-go", "protoc-gen-go-warrior", "protoc-gen-validate"); err != nil {
 		// update the kratos plugins
 		cmd := exec.Command("warrior", "upgrade")
 		cmd.Stdout = os.Stdout
@@ -74,7 +68,7 @@ func walk(dir string, args []string) error {
 		dir = "."
 	}
 	return filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
-		if ext := filepath.Ext(path); ext != ".proto" || strings.HasPrefix(path, "third_party") {
+		if ext := filepath.Ext(path); ext != ".proto" || strings.HasPrefix(path, "third_party") || strings.HasPrefix(path, "vendor") {
 			return nil
 		}
 		return generate(path, args)
@@ -123,12 +117,4 @@ func generate(proto string, args []string) error {
 	fmt.Printf("proto: %s\n", proto)
 
 	return nil
-}
-
-func pathExists(path string) bool {
-	_, err := os.Stat(path)
-	if err != nil {
-		return os.IsExist(err)
-	}
-	return true
 }
