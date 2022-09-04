@@ -28,7 +28,7 @@ func NewRepo(url string, branch string) *Repo {
 	end := strings.LastIndex(url, "/")
 	return &Repo{
 		url:    url,
-		home:   kratosHomeWithDir("repo/" + url[start:end]),
+		home:   warriorHomeWithDir("repo/" + url[start:end]),
 		branch: branch,
 	}
 }

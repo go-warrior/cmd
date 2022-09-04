@@ -27,7 +27,7 @@ func kratosHome() string {
 	return home
 }
 
-func kratosHomeWithDir(dir string) string {
+func warriorHomeWithDir(dir string) string {
 	home := path.Join(kratosHome(), dir)
 	if _, err := os.Stat(home); os.IsNotExist(err) {
 		if err := os.MkdirAll(home, 0700); err != nil {
