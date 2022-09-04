@@ -22,6 +22,7 @@ func Run(cmd *cobra.Command, args []string) {
 		"github.com/go-warrior/cmd/warrior/v2@latest",
 		"github.com/go-warrior/cmd/protoc-gen-go-http/v2@latest",
 		"github.com/go-warrior/cmd/protoc-gen-go-errors/v2@latest",
+		"github.com/go-warrior/cmd/protoc-gen-go-warrior@latest",
 		"google.golang.org/protobuf/cmd/protoc-gen-go@latest",
 		"google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest",
 		"github.com/google/gnostic/cmd/protoc-gen-openapi@latest",
