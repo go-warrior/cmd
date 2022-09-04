@@ -2,13 +2,11 @@ package add
 
 import (
 	"fmt"
-	"os"
+	"io/ioutil"
 	"strings"
 
 	"github.com/spf13/cobra"
 	"golang.org/x/mod/modfile"
-	"golang.org/x/text/cases"
-	"golang.org/x/text/language"
 )
 
 // CmdAdd represents the add command.
@@ -20,7 +18,7 @@ var CmdAdd = &cobra.Command{
 }
 
 func run(cmd *cobra.Command, args []string) {
-	// kratos proto add helloworld/v1/helloworld.proto
+	// kratos add helloworld/v1/helloworld.proto
 	input := args[0]
 	n := strings.LastIndex(input, "/")
 	if n == -1 {
@@ -46,9 +44,9 @@ func run(cmd *cobra.Command, args []string) {
 }
 
 func modName() string {
-	modBytes, err := os.ReadFile("go.mod")
+	modBytes, err := ioutil.ReadFile("go.mod")
 	if err != nil {
-		if modBytes, err = os.ReadFile("../go.mod"); err != nil {
+		if modBytes, err = ioutil.ReadFile("../go.mod"); err != nil {
 			return ""
 		}
 	}
@@ -65,11 +63,7 @@ func javaPackage(name string) string {
 }
 
 func serviceName(name string) string {
-	return toUpperCamelCase(strings.Split(name, ".")[0])
+	return export(strings.Split(name, ".")[0])
 }
 
-func toUpperCamelCase(s string) string {
-	s = strings.ReplaceAll(s, "_", " ")
-	s = cases.Title(language.Und, cases.NoLower).String(s)
-	return strings.ReplaceAll(s, " ", "")
-}
+func export(s string) string { return strings.ToUpper(s[:1]) + s[1:] }

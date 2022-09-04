@@ -1,22 +1,28 @@
 package main
 
 import (
-	"github.com/go-warrior/cmd/warrior/v2/internal/change"
-	"github.com/go-warrior/cmd/warrior/v2/internal/project"
-	"github.com/go-warrior/cmd/warrior/v2/internal/proto"
-	"github.com/go-warrior/cmd/warrior/v2/internal/run"
-	"github.com/go-warrior/cmd/warrior/v2/internal/upgrade"
-	"github.com/spf13/cobra"
 	"log"
+
+	"github.com/go-warrior/cmd/warrior/internal/change"
+	"github.com/go-warrior/cmd/warrior/internal/domain"
+	"github.com/go-warrior/cmd/warrior/internal/model"
+	"github.com/go-warrior/cmd/warrior/internal/project"
+	"github.com/go-warrior/cmd/warrior/internal/proto"
+	"github.com/go-warrior/cmd/warrior/internal/run"
+	"github.com/go-warrior/cmd/warrior/internal/upgrade"
+	"github.com/go-warrior/cmd/warrior/internal/wire"
+
+	"github.com/spf13/cobra"
 )
 
 var (
-	release = "v2.5.0"
+	version string = "v0.0.15"
+
 	rootCmd = &cobra.Command{
-	Use:     "Warrior",
-	Short:   "Warrior: An elegant toolkit for Go microservices.",
-	Long:    `Warrior: An elegant toolkit for Go microservices.`,
-	Version: release,
+		Use:     "warrior",
+		Short:   "warrior: An elegant toolkit for Go microservices.",
+		Long:    `warrior: An elegant toolkit for Go microservices.`,
+		Version: version,
 	}
 )
 
@@ -26,6 +32,9 @@ func init() {
 	rootCmd.AddCommand(upgrade.CmdUpgrade)
 	rootCmd.AddCommand(change.CmdChange)
 	rootCmd.AddCommand(run.CmdRun)
+	rootCmd.AddCommand(wire.CmdWire)
+	rootCmd.AddCommand(domain.CmdDomain)
+	rootCmd.AddCommand(model.CmdModel)
 }
 
 func main() {

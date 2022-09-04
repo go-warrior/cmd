@@ -3,7 +3,7 @@ package base
 import (
 	"bufio"
 	"bytes"
-	"os"
+	"io/ioutil"
 	"os/exec"
 	"path/filepath"
 	"strings"
@@ -13,7 +13,7 @@ import (
 
 // ModulePath returns go module path.
 func ModulePath(filename string) (string, error) {
-	modBytes, err := os.ReadFile(filename)
+	modBytes, err := ioutil.ReadFile(filename)
 	if err != nil {
 		return "", err
 	}
@@ -53,10 +53,11 @@ func WarriorMod() string {
 	if cachePath == "" {
 		cachePath = filepath.Join(gopath, "pkg", "mod")
 	}
-	if path, err := ModuleVersion("github.com/go-warrior/cmd/warrior/v2"); err == nil {
-		// $GOPATH/pkg/mod/github.com/go-warrior/cmd/warrior/v2@v2
+
+	if path, err := ModuleVersion("github.com/go-warrior/cmd/warrior"); err == nil {
+		// $GOPATH/pkg/mod/github.com/go-kratos/cmd
 		return filepath.Join(cachePath, path)
 	}
-	// $GOPATH/src/github.com/go-warrior/cmd/warrior
+	// $GOPATH/src/github.com/go-warrior/cmd
 	return filepath.Join(gopath, "src", "github.com", "go-warrior", "cmd", "warrior")
 }
