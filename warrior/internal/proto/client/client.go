@@ -83,7 +83,7 @@ func generate(proto string, args []string) error {
 		"--proto_path=" + base.WarriorMod(),
 		"--proto_path=" + filepath.Join(base.WarriorMod(), "third_party"),
 		"--go_out=paths=source_relative:.",
-		"--go-kirito_out=paths=source_relative:.",
+		"--go-warrior_out=paths=source_relative:.",
 	}
 	protoBytes, err := ioutil.ReadFile(proto)
 	if err == nil && len(protoBytes) > 0 {
