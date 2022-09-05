@@ -78,20 +78,12 @@ func walk(dir string, args []string) error {
 // generate is used to execute the generate command for the specified proto file
 func generate(proto string, args []string) error {
 	input := []string{
-		"--proto_path=/usr/local/include",
 		"--proto_path=.",
 		"--proto_path=./third_party",
 		"--proto_path=" + base.WarriorMod(),
 		"--proto_path=" + filepath.Join(base.WarriorMod(), "third_party"),
 		"--go_out=paths=source_relative:.",
-		"--go-warrior_out=paths=source_relative:.",
-		"--openapiv2_out=.",
-		"--openapiv2_opt=logtostderr=true",
-		"--openapiv2_opt=json_names_for_fields=false",
-		"--openapiv2_opt=disable_default_errors=true",
-		"--openapiv2_opt=allow_delete_body=true",
-		"--openapiv2_opt=enums_as_ints=true",
-		"--openapiv2_opt=openapi_naming_strategy=simple",
+		"--go-kirito_out=paths=source_relative:.",
 	}
 	protoBytes, err := ioutil.ReadFile(proto)
 	if err == nil && len(protoBytes) > 0 {

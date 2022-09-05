@@ -9,24 +9,12 @@ option java_package = "proto";
 
 service Test {
     rpc CreateTest (CreateTestRequest) returns (CreateTestReply){
-		option(google.api.http) = {
-			post:"helloworld",
-		};
 	}
     rpc UpdateTest (UpdateTestRequest) returns (UpdateTestReply){
-		option(google.api.http) = {
-			put:"helloworld/{name}",
-		};
 	}
     rpc DeleteTest (DeleteTestRequest) returns (DeleteTestReply){
-		option(google.api.http) = {
-			delete:"helloworld/{name}",
-		};
 	}
     rpc GetTest (GetTestRequest) returns (GetTestReply){
-		option(google.api.http) = {
-			get:"helloworld/{name}",
-		};
 	}
     rpc ListTest (ListTestRequest) returns (ListTestReply){
 		option(google.api.http) = {
